@@ -1,0 +1,258 @@
+// ===== 工业风特定样式组件 =====
+
+// 状态指示灯
+.status-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: $spacing-xs $spacing-md;
+  border-radius: $radius-md;
+  font-size: 13px;
+  font-weight: 500;
+
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 50%;
+      opacity: 0.3;
+      animation: pulse 2s infinite;
+    }
+
+    &.connected {
+      background: $color-connected;
+      &::after { background: $color-connected; }
+    }
+    &.disconnected {
+      background: $color-disconnected;
+      &::after { background: $color-disconnected; }
+    }
+    &.reconnecting {
+      background: $color-reconnecting;
+      &::after { background: $color-reconnecting; animation-duration: 0.8s; }
+    }
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.3; }
+  50% { transform: scale(1.5); opacity: 0; }
+}
+
+// 急停按钮
+.emergency-stop-btn {
+  width: $estop-size;
+  height: $estop-size;
+  border-radius: 50%;
+  background: $color-danger;
+  border: 3px solid darken($color-danger, 10%);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 20px rgba($color-danger, 0.4), 0 4px 12px rgba(0,0,0,0.4);
+  transition: all $transition-fast;
+  position: fixed;
+  top: 16px;
+  right: 24px;
+  z-index: $z-estop;
+  user-select: none;
+
+  &:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 30px rgba($color-danger, 0.6), 0 6px 16px rgba(0,0,0,0.5);
+  }
+
+  &:active {
+    transform: scale(0.95);
+    box-shadow: 0 0 10px rgba($color-danger, 0.3);
+  }
+
+  &.active {
+    animation: estop-pulse 0.8s infinite;
+    background: darken($color-danger, 5%);
+  }
+}
+
+@keyframes estop-pulse {
+  0%, 100% { box-shadow: 0 0 20px rgba($color-danger, 0.4); }
+  50% { box-shadow: 0 0 40px rgba($color-danger, 0.8); }
+}
+
+// 安全横幅
+.safety-banner {
+  background: rgba($color-warning, 0.1);
+  border: 1px solid rgba($color-warning, 0.3);
+  border-radius: $radius-md;
+  padding: $spacing-md $spacing-lg;
+  margin-bottom: $spacing-md;
+
+  .check-item {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    font-size: 13px;
+
+    &.pass { color: $color-success; }
+    &.fail { color: $color-danger; }
+  }
+}
+
+// 报警横幅
+.alarm-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba($color-danger, 0.15);
+  border-bottom: 2px solid $color-danger;
+  color: $color-danger;
+  padding: $spacing-sm $spacing-lg;
+  z-index: $z-alarm-banner;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-md;
+  font-weight: 500;
+  animation: slide-down 0.3s ease;
+}
+
+@keyframes slide-down {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(0); }
+}
+
+// 仪表盘卡片
+.dashboard-card {
+  background: $color-bg-glass;
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  backdrop-filter: blur(12px);
+  transition: all $transition-fast;
+  cursor: default;
+
+  .card-title {
+    font-size: 12px;
+    color: $color-text-muted;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: $spacing-sm;
+  }
+
+  .card-value {
+    font-size: 28px;
+    font-weight: 700;
+    font-family: $font-family-mono;
+  }
+
+  &.clickable {
+    cursor: pointer;
+    &:hover {
+      border-color: $color-info;
+      transform: translateY(-2px);
+      box-shadow: $shadow-elevated;
+    }
+  }
+}
+
+// 轴控制面板
+.axis-control-panel {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: $spacing-md;
+}
+
+.axis-card {
+  background: $color-bg-glass;
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  backdrop-filter: blur(12px);
+
+  .axis-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: $spacing-md;
+
+    .axis-name {
+      font-weight: 700;
+      font-size: 16px;
+    }
+    .axis-desc {
+      font-size: 12px;
+      color: $color-text-muted;
+    }
+  }
+}
+
+// 速度滑块
+.speed-control {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  padding: $spacing-md;
+  background: $color-bg-glass;
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+
+  .speed-value {
+    font-family: $font-family-mono;
+    font-size: 24px;
+    font-weight: 700;
+    min-width: 60px;
+    text-align: center;
+  }
+
+  .speed-preset {
+    .preset-btn {
+      padding: $spacing-xs $spacing-md;
+      border: 1px solid $color-border;
+      border-radius: $radius-sm;
+      background: $color-bg-input;
+      color: $color-text-secondary;
+      cursor: pointer;
+      font-size: 12px;
+      transition: all $transition-fast;
+
+      &:hover { border-color: $color-info; color: $color-text-primary; }
+      &.active { background: rgba($color-info, 0.2); border-color: $color-info; color: $color-info; }
+    }
+  }
+}
+
+// 十六进制终端
+.hex-terminal {
+  font-family: $font-family-mono;
+  background: $color-bg-input;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  padding: $spacing-md;
+
+  .hex-send { color: $color-send; }
+  .hex-receive { color: $color-receive; }
+  .hex-error { color: $color-danger; }
+  .hex-timestamp { color: $color-text-muted; font-size: 12px; }
+}
+
+// 通用工具类
+.flex-center { display: flex; align-items: center; justify-content: center; }
+.flex-between { display: flex; align-items: center; justify-content: space-between; }
+.gap-sm { gap: $spacing-sm; }
+.gap-md { gap: $spacing-md; }
+.gap-lg { gap: $spacing-lg; }
+.text-mono { font-family: $font-family-mono; }
+.text-success { color: $color-success; }
+.text-danger { color: $color-danger; }
+.text-warning { color: $color-warning; }
+.text-info { color: $color-info; }

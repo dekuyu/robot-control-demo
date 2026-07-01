@@ -1,0 +1,74 @@
+// ===== 工业暗色主题 SCSS 变量 =====
+
+// 主色调 - 暗色工业风
+$color-bg-primary: #0f1419;       // 主背景
+$color-bg-secondary: #1a1f2e;     // 次级背景
+$color-bg-card: #1e2338;          // 卡片背景
+$color-bg-glass: rgba(30, 35, 56, 0.85);  // 毛玻璃背景
+$color-bg-input: #141824;         // 输入框背景
+$color-border: #2d3548;           // 边框色
+
+// 功能色
+$color-success: #00c853;          // 绿色 - 安全/正常/连接成功
+$color-danger: #ff1744;           // 红色 - 危险/急停/错误
+$color-warning: #ff9100;          // 橙色 - 警告
+$color-info: #2196f3;             // 蓝色 - 信息/接收数据
+$color-send: #00e676;             // 发送数据绿
+$color-receive: #448aff;          // 接收数据蓝
+
+// 文字色
+$color-text-primary: #e8eaed;     // 主文字
+$color-text-secondary: #9aa0a6;   // 次文字
+$color-text-muted: #5f6368;       // 弱文字
+$color-text-link: #8ab4f8;        // 链接色
+
+// 状态色 - 连接状态
+$color-connected: #00c853;        // 已连接绿
+$color-disconnected: #ff1744;     // 断开红
+$color-reconnecting: #ff9100;     // 重连中黄
+
+// 间距
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 32px;
+$spacing-2xl: 48px;
+
+// 圆角
+$radius-sm: 4px;
+$radius-md: 8px;
+$radius-lg: 12px;
+$radius-xl: 16px;
+
+// 阴影
+$shadow-card: 0 2px 12px rgba(0, 0, 0, 0.3);
+$shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.4);
+$shadow-elevated: 0 4px 24px rgba(0, 0, 0, 0.5);
+
+// 过渡
+$transition-fast: 150ms ease;
+$transition-normal: 250ms ease;
+$transition-slow: 350ms ease;
+
+// 字体
+$font-family-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+$font-family-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+// 断点
+$breakpoint-sm: 768px;
+$breakpoint-md: 1024px;
+$breakpoint-lg: 1440px;
+
+// 布局
+$sidebar-width: 240px;
+$header-height: 56px;
+$estop-size: 64px;
+
+// Z-index 层级
+$z-sidebar: 100;
+$z-header: 200;
+$z-estop: 300;
+$z-modal: 400;
+$z-alarm-banner: 500;
+$z-tooltip: 600;

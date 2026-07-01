@@ -1,0 +1,142 @@
+// ===== 全局样式重置 + Element Plus 暗色覆盖 =====
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  font-family: $font-family-sans;
+  font-size: 14px;
+  color: $color-text-primary;
+  background-color: $color-bg-primary;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#app {
+  width: 100%;
+  height: 100%;
+}
+
+// 滚动条样式
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: $color-bg-secondary;
+}
+::-webkit-scrollbar-thumb {
+  background: $color-border;
+  border-radius: 3px;
+  &:hover {
+    background: lighten($color-border, 10%);
+  }
+}
+
+// 链接
+a {
+  color: $color-text-link;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+// 选中文本
+::selection {
+  background: rgba($color-info, 0.3);
+  color: $color-text-primary;
+}
+
+// ===== Element Plus 暗色主题覆盖 =====
+
+// 暗色主题变量
+:root {
+  --el-color-primary: #{$color-info};
+  --el-color-success: #{$color-success};
+  --el-color-warning: #{$color-warning};
+  --el-color-danger: #{$color-danger};
+  --el-color-info: #{$color-info};
+
+  --el-bg-color: #{$color-bg-secondary};
+  --el-bg-color-overlay: #{$color-bg-card};
+  --el-bg-color-page: #{$color-bg-primary};
+  --el-border-color: #{$color-border};
+  --el-border-color-light: #{lighten($color-border, 10%)};
+  --el-text-color-primary: #{$color-text-primary};
+  --el-text-color-regular: #{$color-text-secondary};
+  --el-text-color-secondary: #{$color-text-muted};
+  --el-fill-color: #{$color-bg-input};
+  --el-fill-color-blank: #{$color-bg-input};
+  --el-fill-color-light: #{$color-bg-card};
+
+  --el-border-radius-base: #{$radius-md};
+  --el-font-size-base: 14px;
+}
+
+// Element Plus 组件覆盖
+.el-card {
+  background: $color-bg-glass;
+  border-color: $color-border;
+  backdrop-filter: blur(12px);
+}
+
+.el-dialog {
+  background: $color-bg-card;
+  border: 1px solid $color-border;
+}
+
+.el-menu {
+  background: transparent;
+  border-right: 1px solid $color-border;
+}
+
+.el-table {
+  --el-table-bg-color: #{$color-bg-glass};
+  --el-table-tr-bg-color: #{$color-bg-glass};
+  --el-table-header-bg-color: #{$color-bg-secondary};
+  --el-table-row-hover-bg-color: #{rgba($color-info, 0.08)};
+  --el-table-border-color: #{$color-border};
+  color: $color-text-primary;
+}
+
+.el-input__wrapper {
+  background-color: $color-bg-input;
+  box-shadow: 0 0 0 1px $color-border inset;
+}
+
+.el-button--danger {
+  --el-button-bg-color: #{$color-danger};
+  --el-button-border-color: #{$color-danger};
+}
+
+.el-slider__bar {
+  background-color: $color-info;
+}
+
+.el-tag--danger {
+  --el-tag-bg-color: rgba($color-danger, 0.15);
+  --el-tag-border-color: rgba($color-danger, 0.3);
+  --el-tag-text-color: #{$color-danger};
+}
+
+.el-tag--success {
+  --el-tag-bg-color: rgba($color-success, 0.15);
+  --el-tag-border-color: rgba($color-success, 0.3);
+  --el-tag-text-color: #{$color-success};
+}
+
+.el-tag--warning {
+  --el-tag-bg-color: rgba($color-warning, 0.15);
+  --el-tag-border-color: rgba($color-warning, 0.3);
+  --el-tag-text-color: #{$color-warning};
+}
+
+.el-progress-bar__outer {
+  background-color: $color-bg-input;
+}
